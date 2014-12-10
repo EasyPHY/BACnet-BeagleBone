@@ -54,26 +54,9 @@ LFLAGS := -Wl,$(BACNET_LIB),$(SYSTEM_LIB)
 
 .EXPORT_ALL_VARIABLES:
 
-SUBDIRS = readprop writeprop readfile writefile reinit server dcc \
-	whohas whois ucov scov timesync epics readpropm readrange \
-	uptransfer
+SUBDIRS = server
 
-ifeq (${BACDL_DEFINE},-DBACDL_BIP=1)
-	SUBDIRS += whoisrouter iamrouter initrouter readbdt
-endif
-
-ifeq (${BACNET_PORT},linux)
-ifneq (${OSTYPE},cygwin)
-	SUBDIRS += mstpcap mstpcrc
-#SUBDIRS += router
-endif
-endif
-
-ifeq (${BACNET_PORT},win32)
-	SUBDIRS += ptransfer mstpcap mstpcrc
-endif
-
-.PHONY : all gateway router clean
+.PHONY : all clean
 
 TARGETS = all clean
 

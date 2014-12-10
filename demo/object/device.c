@@ -54,25 +54,6 @@
 #include "bi.h"
 #include "bo.h"
 #include "bv.h"
-#include "channel.h"
-#include "command.h"
-#include "csv.h"
-#include "iv.h"
-#include "lc.h"
-#include "lsp.h"
-#include "ms-input.h"
-#include "mso.h"
-#include "msv.h"
-#include "trendlog.h"
-#if defined(INTRINSIC_REPORTING)
-#include "nc.h"
-#endif /* defined(INTRINSIC_REPORTING) */
-#if defined(BACFILE)
-#include "bacfile.h"
-#endif /* defined(BACFILE) */
-#if defined(BAC_UCI)
-#include "ucix.h"
-#endif /* defined(BAC_UCI) */
 
 
 #if defined(__BORLANDC__)
@@ -200,205 +181,7 @@ static object_functions_t My_Object_Table[] = {
             NULL /* COV */ ,
             NULL /* COV Clear */ ,
         NULL /* Intrinsic Reporting */ },
-    {OBJECT_CHARACTERSTRING_VALUE,
-            CharacterString_Value_Init,
-            CharacterString_Value_Count,
-            CharacterString_Value_Index_To_Instance,
-            CharacterString_Value_Valid_Instance,
-            CharacterString_Value_Object_Name,
-            CharacterString_Value_Read_Property,
-            CharacterString_Value_Write_Property,
-            CharacterString_Value_Property_Lists,
-            NULL /* ReadRangeInfo */ ,
-            NULL /* Iterator */ ,
-            NULL /* Value_Lists */ ,
-            NULL /* COV */ ,
-            NULL /* COV Clear */ ,
-        NULL /* Intrinsic Reporting */ },
-    {OBJECT_COMMAND,
-            Command_Init,
-            Command_Count,
-            Command_Index_To_Instance,
-            Command_Valid_Instance,
-            Command_Object_Name,
-            Command_Read_Property,
-            Command_Write_Property,
-            Command_Property_Lists,
-            NULL /* ReadRangeInfo */ ,
-            NULL /* Iterator */ ,
-            NULL /* Value_Lists */ ,
-            NULL /* COV */ ,
-            NULL /* COV Clear */ ,
-        NULL /* Intrinsic Reporting */ },
-    {OBJECT_INTEGER_VALUE,
-            Integer_Value_Init,
-            Integer_Value_Count,
-            Integer_Value_Index_To_Instance,
-            Integer_Value_Valid_Instance,
-            Integer_Value_Object_Name,
-            Integer_Value_Read_Property,
-            Integer_Value_Write_Property,
-            Integer_Value_Property_Lists,
-            NULL /* ReadRangeInfo */ ,
-            NULL /* Iterator */ ,
-            NULL /* Value_Lists */ ,
-            NULL /* COV */ ,
-            NULL /* COV Clear */ ,
-        NULL /* Intrinsic Reporting */ },
-#if defined(INTRINSIC_REPORTING)
-    {OBJECT_NOTIFICATION_CLASS,
-            Notification_Class_Init,
-            Notification_Class_Count,
-            Notification_Class_Index_To_Instance,
-            Notification_Class_Valid_Instance,
-            Notification_Class_Object_Name,
-            Notification_Class_Read_Property,
-            Notification_Class_Write_Property,
-            Notification_Class_Property_Lists,
-            NULL /* ReadRangeInfo */ ,
-            NULL /* Iterator */ ,
-            NULL /* Value_Lists */ ,
-            NULL /* COV */ ,
-            NULL /* COV Clear */ ,
-        NULL /* Intrinsic Reporting */ },
-#endif
-    {OBJECT_LIFE_SAFETY_POINT,
-            Life_Safety_Point_Init,
-            Life_Safety_Point_Count,
-            Life_Safety_Point_Index_To_Instance,
-            Life_Safety_Point_Valid_Instance,
-            Life_Safety_Point_Object_Name,
-            Life_Safety_Point_Read_Property,
-            Life_Safety_Point_Write_Property,
-            Life_Safety_Point_Property_Lists,
-            NULL /* ReadRangeInfo */ ,
-            NULL /* Iterator */ ,
-            NULL /* Value_Lists */ ,
-            NULL /* COV */ ,
-            NULL /* COV Clear */ ,
-        NULL /* Intrinsic Reporting */ },
-    {OBJECT_LOAD_CONTROL,
-            Load_Control_Init,
-            Load_Control_Count,
-            Load_Control_Index_To_Instance,
-            Load_Control_Valid_Instance,
-            Load_Control_Object_Name,
-            Load_Control_Read_Property,
-            Load_Control_Write_Property,
-            Load_Control_Property_Lists,
-            NULL /* ReadRangeInfo */ ,
-            NULL /* Iterator */ ,
-            NULL /* Value_Lists */ ,
-            NULL /* COV */ ,
-            NULL /* COV Clear */ ,
-        NULL /* Intrinsic Reporting */ },
-    {OBJECT_MULTI_STATE_INPUT,
-            Multistate_Input_Init,
-            Multistate_Input_Count,
-            Multistate_Input_Index_To_Instance,
-            Multistate_Input_Valid_Instance,
-            Multistate_Input_Object_Name,
-            Multistate_Input_Read_Property,
-            Multistate_Input_Write_Property,
-            Multistate_Input_Property_Lists,
-            NULL /* ReadRangeInfo */ ,
-            NULL /* Iterator */ ,
-            NULL /* Value_Lists */ ,
-            NULL /* COV */ ,
-            NULL /* COV Clear */ ,
-        NULL /* Intrinsic Reporting */ },
-    {OBJECT_MULTI_STATE_OUTPUT,
-            Multistate_Output_Init,
-            Multistate_Output_Count,
-            Multistate_Output_Index_To_Instance,
-            Multistate_Output_Valid_Instance,
-            Multistate_Output_Object_Name,
-            Multistate_Output_Read_Property,
-            Multistate_Output_Write_Property,
-            Multistate_Output_Property_Lists,
-            NULL /* ReadRangeInfo */ ,
-            NULL /* Iterator */ ,
-            NULL /* Value_Lists */ ,
-            NULL /* COV */ ,
-            NULL /* COV Clear */ ,
-        NULL /* Intrinsic Reporting */ },
-    {OBJECT_MULTI_STATE_VALUE,
-            Multistate_Value_Init,
-            Multistate_Value_Count,
-            Multistate_Value_Index_To_Instance,
-            Multistate_Value_Valid_Instance,
-            Multistate_Value_Object_Name,
-            Multistate_Value_Read_Property,
-            Multistate_Value_Write_Property,
-            Multistate_Value_Property_Lists,
-            NULL /* ReadRangeInfo */ ,
-            NULL /* Iterator */ ,
-            NULL /* Value_Lists */ ,
-            NULL /* COV */ ,
-            NULL /* COV Clear */ ,
-        NULL /* Intrinsic Reporting */ },
-    {OBJECT_TRENDLOG,
-            Trend_Log_Init,
-            Trend_Log_Count,
-            Trend_Log_Index_To_Instance,
-            Trend_Log_Valid_Instance,
-            Trend_Log_Object_Name,
-            Trend_Log_Read_Property,
-            Trend_Log_Write_Property,
-            Trend_Log_Property_Lists,
-            TrendLogGetRRInfo,
-            NULL /* Iterator */ ,
-            NULL /* Value_Lists */ ,
-            NULL /* COV */ ,
-            NULL /* COV Clear */ ,
-        NULL /* Intrinsic Reporting */ },
-    {OBJECT_LIGHTING_OUTPUT,
-            Lighting_Output_Init,
-            Lighting_Output_Count,
-            Lighting_Output_Index_To_Instance,
-            Lighting_Output_Valid_Instance,
-            Lighting_Output_Object_Name,
-            Lighting_Output_Read_Property,
-            Lighting_Output_Write_Property,
-            Lighting_Output_Property_Lists,
-            NULL /* ReadRangeInfo */ ,
-            NULL /* Iterator */ ,
-            NULL /* Value_Lists */ ,
-            NULL /* COV */ ,
-            NULL /* COV Clear */ ,
-        NULL /* Intrinsic Reporting */ },
-    {OBJECT_CHANNEL,
-            Channel_Init,
-            Channel_Count,
-            Channel_Index_To_Instance,
-            Channel_Valid_Instance,
-            Channel_Object_Name,
-            Channel_Read_Property,
-            Channel_Write_Property,
-            Channel_Property_Lists,
-            NULL /* ReadRangeInfo */ ,
-            NULL /* Iterator */ ,
-            NULL /* Value_Lists */ ,
-            NULL /* COV */ ,
-            NULL /* COV Clear */ ,
-        NULL /* Intrinsic Reporting */ },
-#if defined(BACFILE)
-    {OBJECT_FILE,
-            bacfile_init,
-            bacfile_count,
-            bacfile_index_to_instance,
-            bacfile_valid_instance,
-            bacfile_object_name,
-            bacfile_read_property,
-            bacfile_write_property,
-            BACfile_Property_Lists,
-            NULL /* ReadRangeInfo */ ,
-            NULL /* Iterator */ ,
-            NULL /* Value_Lists */ ,
-            NULL /* COV */ ,
-            NULL /* COV Clear */ ,
-        NULL /* Intrinsic Reporting */ },
-#endif
+
     {MAX_BACNET_OBJECT_TYPE,
             NULL /* Init */ ,
             NULL /* Count */ ,
@@ -524,7 +307,7 @@ bool Device_Reinitialize(
 {
     bool status = false;
 
-    if (characterstring_ansi_same(&rd_data->password, "Jesus")) {
+    if (characterstring_ansi_same(&rd_data->password, "connectex")) {
         switch (rd_data->state) {
             case BACNET_REINIT_COLDSTART:
             case BACNET_REINIT_WARMSTART:
@@ -621,15 +404,15 @@ void Device_Property_Lists(
    The properties that are constant can be hard coded
    into the read-property encoding. */
 
-static uint32_t Object_Instance_Number = 260001;
+static uint32_t Object_Instance_Number = 462072;
 static BACNET_CHARACTER_STRING My_Object_Name;
 static BACNET_DEVICE_STATUS System_Status = STATUS_OPERATIONAL;
 static char *Vendor_Name = BACNET_VENDOR_NAME;
 static uint16_t Vendor_Identifier = BACNET_VENDOR_ID;
-static char Model_Name[MAX_DEV_MOD_LEN + 1] = "GNU";
+static char Model_Name[MAX_DEV_MOD_LEN + 1] = "EasyPHY BeagleBone";
 static char Application_Software_Version[MAX_DEV_VER_LEN + 1] = "1.0";
 static char Location[MAX_DEV_LOC_LEN + 1] = "USA";
-static char Description[MAX_DEV_DESC_LEN + 1] = "server";
+static char Description[MAX_DEV_DESC_LEN + 1] = "EasyPHY Reference Software";
 /* static uint8_t Protocol_Version = 1; - constant, not settable */
 /* static uint8_t Protocol_Revision = 4; - constant, not settable */
 /* Protocol_Services_Supported - dynamically generated */
@@ -1886,7 +1669,7 @@ void Device_Init(
         characterstring_init_ansi(&My_Object_Name, uciname);
     } else {
 #endif /* defined(BAC_UCI) */
-        characterstring_init_ansi(&My_Object_Name, "SimpleServer");
+        characterstring_init_ansi(&My_Object_Name, "EasyPHY BeagleBone Software Reference Design");
 #if defined(BAC_UCI)
     }
     ucix_cleanup(ctx);

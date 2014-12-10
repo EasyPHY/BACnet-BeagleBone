@@ -42,18 +42,17 @@
 #include "iam.h"
 #include "tsm.h"
 #include "device.h"
-#include "bacfile.h"
 #include "datalink.h"
 #include "dcc.h"
 #include "filename.h"
 #include "getevent.h"
 #include "net.h"
 #include "txbuf.h"
-#include "lc.h"
+// #include "lc.h"
 #include "version.h"
 /* include the device object */
 #include "device.h"
-#include "trendlog.h"
+// #include "trendlog.h"
 #if defined(INTRINSIC_REPORTING)
 #include "nc.h"
 #endif /* defined(INTRINSIC_REPORTING) */
@@ -103,12 +102,6 @@ static void Init_Service_Handlers(
         handler_write_property_multiple);
     apdu_set_confirmed_handler(SERVICE_CONFIRMED_READ_RANGE,
         handler_read_range);
-#if defined(BACFILE)
-    apdu_set_confirmed_handler(SERVICE_CONFIRMED_ATOMIC_READ_FILE,
-        handler_atomic_read_file);
-    apdu_set_confirmed_handler(SERVICE_CONFIRMED_ATOMIC_WRITE_FILE,
-        handler_atomic_write_file);
-#endif
     apdu_set_confirmed_handler(SERVICE_CONFIRMED_REINITIALIZE_DEVICE,
         handler_reinitialize_device);
     apdu_set_unconfirmed_handler(SERVICE_UNCONFIRMED_UTC_TIME_SYNCHRONIZATION,
@@ -123,16 +116,6 @@ static void Init_Service_Handlers(
     apdu_set_confirmed_handler(SERVICE_CONFIRMED_DEVICE_COMMUNICATION_CONTROL,
         handler_device_communication_control);
     /* handle the data coming back from private requests */
-    apdu_set_unconfirmed_handler(SERVICE_UNCONFIRMED_PRIVATE_TRANSFER,
-        handler_unconfirmed_private_transfer);
-#if defined(INTRINSIC_REPORTING)
-    apdu_set_confirmed_handler(SERVICE_CONFIRMED_ACKNOWLEDGE_ALARM,
-        handler_alarm_ack);
-    apdu_set_confirmed_handler(SERVICE_CONFIRMED_GET_EVENT_INFORMATION,
-        handler_get_event_information);
-    apdu_set_confirmed_handler(SERVICE_CONFIRMED_GET_ALARM_SUMMARY,
-        handler_get_alarm_summary);
-#endif /* defined(INTRINSIC_REPORTING) */
 }
 
 static void print_usage(char *filename)
@@ -228,7 +211,7 @@ int main(
     ucix_cleanup(ctx);
 #endif /* defined(BAC_UCI) */
 
-    printf("BACnet Server Demo\n" "BACnet Stack Version %s\n"
+    printf("BACnet EasyPHY Reference Software Demo\n" "BACnet Stack Version %s\n"
         "BACnet Device ID: %u\n" "Max APDU: %d\n", BACnet_Version,
         Device_Object_Instance_Number(), MAX_APDU);
     /* load any static address bindings to show up
@@ -262,11 +245,11 @@ int main(
             bvlc_maintenance_timer(elapsed_seconds);
 #endif
             dlenv_maintenance_timer(elapsed_seconds);
-            Load_Control_State_Machine_Handler();
+//             Load_Control_State_Machine_Handler();
             elapsed_milliseconds = elapsed_seconds * 1000;
             handler_cov_timer_seconds(elapsed_seconds);
             tsm_timer_milliseconds(elapsed_milliseconds);
-            trend_log_timer(elapsed_seconds);
+//             trend_log_timer(elapsed_seconds);
 #if defined(INTRINSIC_REPORTING)
             Device_local_reporting();
 #endif

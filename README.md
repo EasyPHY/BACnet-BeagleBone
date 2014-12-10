@@ -1,7 +1,7 @@
 BACnet-BeagleBone
 =================
 
-Reference source code for EasyPHY interfaces on the BeagleBone platform
+Reference source code for using EasyPHY interfaces on the BeagleBone Black platform
 Based on the very popular open-source stack by Steve Karg at https://sourceforge.net/projects/bacnet/?source=directory 
 
 
@@ -72,4 +72,10 @@ layer for communication by default, but could be compiled to use BACnet
 Ethernet, ARCNET, or MS/TP.
 
 
+To build and execute on BeagleBone Black platform
+-------------------------------------------------
+
 $ make clean all
+$ demo/sever/bacsrv
+
+

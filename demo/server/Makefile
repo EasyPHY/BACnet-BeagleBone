@@ -18,20 +18,7 @@ OBJECT_SRC = \
 	$(BACNET_OBJECT)/av.c \
 	$(BACNET_OBJECT)/bi.c \
 	$(BACNET_OBJECT)/bo.c \
-	$(BACNET_OBJECT)/bv.c \
-	$(BACNET_OBJECT)/channel.c \
-	$(BACNET_OBJECT)/command.c \
-	$(BACNET_OBJECT)/csv.c \
-	$(BACNET_OBJECT)/iv.c \
-	$(BACNET_OBJECT)/lc.c \
-	$(BACNET_OBJECT)/lo.c \
-	$(BACNET_OBJECT)/lsp.c \
-	$(BACNET_OBJECT)/ms-input.c \
-	$(BACNET_OBJECT)/mso.c \
-	$(BACNET_OBJECT)/msv.c \
-	$(BACNET_OBJECT)/nc.c  \
-	$(BACNET_OBJECT)/trendlog.c \
-	$(BACNET_OBJECT)/bacfile.c
+	$(BACNET_OBJECT)/bv.c 
 
 SRCS = ${SRC} ${OBJECT_SRC}
 
